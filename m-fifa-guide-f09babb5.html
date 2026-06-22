@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再访 · 世界杯记忆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f3f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            padding: 2.5rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Hero 区域——没有大标题，只有温柔的短句 */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.8rem 2.2rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e9eaec;
+            text-align: center;
+        }
+
+        .hero .greeting {
+            font-size: 1.9rem;
+            font-weight: 350;
+            letter-spacing: 1px;
+            color: #1e293b;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #6b7280;
+            border-top: 1px solid #eef0f2;
+            padding-top: 1.2rem;
+            margin-top: 0.8rem;
+            display: inline-block;
+        }
+
+        /* 承接段落 card */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e9eaec;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+            font-weight: 470;
+        }
+
+        .card a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        .soft-highlight {
+            background: #f8fafc;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            font-style: normal;
+        }
+
+        /* 特点列表 —— 温和的卡片内列表 */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.8rem 0 0.2rem 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #f1f3f5;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "▹";
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .feature-list strong {
+            font-weight: 520;
+            color: #1e293b;
+        }
+
+        /* 双栏场景（适合宽屏） */
+        .scenes-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.2rem 0 0.5rem;
+        }
+
+        .scene-item {
+            background: #f9fafb;
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            flex: 1 1 200px;
+            border: 1px solid #e9eaec;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .scene-item .title {
+            font-weight: 520;
+            color: #1f2937;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .scene-item .desc {
+            font-size: 0.93rem;
+            color: #5a6577;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2.2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e9eaec;
+        }
+
+        .faq-summary details {
+            margin-bottom: 0.7rem;
+            border-bottom: 1px solid #f0f2f5;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-summary details:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-summary summary {
+            font-weight: 470;
+            color: #334155;
+            cursor: pointer;
+            padding: 0.2rem 0;
+        }
+
+        .faq-summary summary::-webkit-details-marker {
+            color: #94a3b8;
+        }
+
+        .faq-summary details p {
+            color: #556070;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            padding-left: 0.3rem;
+        }
+
+        /* 温和结尾 */
+        .gentle-footer {
+            text-align: right;
+            padding: 1rem 0.5rem 0.2rem;
+            color: #6b7280;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e5e9;
+            margin-top: 0.8rem;
+        }
+
+        .gentle-footer span {
+            opacity: 0.6;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.5rem 0.8rem;
+            }
+            .hero,
+            .card,
+            .faq-summary {
+                padding: 1.6rem 1.2rem;
+            }
+            .hero .greeting {
+                font-size: 1.6rem;
+            }
+            .scenes-grid {
+                flex-direction: column;
+            }
+        }
+
+        /* 分隔线 */
+        hr {
+            border: none;
+            border-top: 1px solid #e5e7eb;
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Hero 开场短句 -->
+    <div class="hero">
+        <div class="greeting">再次走来，目光所至仍是那片绿茵。</div>
+        <div class="sub">每一次回访都像翻开一本旧日记，<br>但故事还在继续。</div>
+    </div>
+
+    <!-- 承接段落 —— 从再次访问与收藏切入 -->
+    <div class="card">
+        <p>
+            有时你会忽然想回来看看——那支队伍的晋级之路、某个午后的绝杀、或者只是积分榜上熟悉的名字。
+            浏览器收藏夹里那个链接，不知不觉已经伴随了几个赛事周期。
+        </p>
+        <p>
+            当你重新输入 <span class="soft-highlight">m-fifa-wc.com</span>，
+            那不只是加载一个页面，更像是推开一扇通往共同记忆的门。
+            关于<a href="https://m-fifa-wc.com">世界杯</a>的痕迹，平静地等在那里，不催促，不喧哗。
+        </p>
+        <p>
+            收藏它，不是为了频繁打扰，而是知道在某个需要安静的傍晚，你可以顺路回来，
+            看看赛程、翻翻小组形势，或者只是确认那个你一直关注的队伍是否依旧坚韧。
+        </p>
+    </div>
+
+    <!-- 特点列表 —— 温和地指向信息组织方式 -->
+    <div class="card">
+        <p style="font-weight: 470; margin-bottom: 0.4rem; color:#1f2937;">这里呈现的内容保持着一种沉着的气质：</p>
+        <ul class="feature-list">
+            <li><strong>赛程与结果</strong> —— 以简净的列表呈现，不冗余，不夸大，你看到的就是正在发生的事实。</li>
+            <li><strong>队伍与小组</strong> —— 每个组别都像一个小章节，你可以随时回来翻阅，不会有未读红点的压力。</li>
+            <li><strong>实时动态</strong> —— 信息更新带着克制的节奏，不打扰你日常的节奏，却在你需要时恰好出现。</li>
+            <li><strong>收藏体验</strong> —— 页面设计偏向沉静，即便多日未访，再次打开时依旧清晰如初。</li>
+        </ul>
+    </div>
+
+    <!-- 场景 —— 什么时候你可能会再次打开收藏夹 -->
+    <div class="card">
+        <p style="font-weight: 470; color:#1f2937;">一些时候，你会自然而然地想起它：</p>
+        <div class="scenes-grid">
+            <div class="scene-item">
+                <span class="title">深夜复盘</span>
+                <span class="desc">比赛结束后的安静时刻，你想再看一眼关键数据，而不是热炒的评论。</span>
+            </div>
+            <div class="scene-item">
+                <span class="title">新赛季前夕</span>
+                <span class="desc">当赛历上标记出开幕日，收藏夹里的链接就成了第一站。</span>
+            </div>
+            <div class="scene-item">
+                <span class="title">与朋友聊起</span>
+                <span class="desc">谈话中提到某支队伍的历史战绩，你顺手打开，平静地分享。</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 —— 温和的疑问回应 -->
+    <div class="faq-summary">
+        <p style="font-weight: 470; margin-bottom: 0.8rem; color:#1f2937;">偶尔会有的疑问，这里提前聊一聊：</p>
+        <details>
+            <summary>页面会频繁变动吗？</summary>
+            <p>内容的更新跟随赛事节奏，不会无故推送。你收藏的链接始终保持整洁，没有杂乱的弹窗或横幅。</p>
+        </details>
+        <details>
+            <summary>我需要注册或登录吗？</summary>
+            <p>直接打开就能浏览。信息是开放的，你只需要带上你的兴趣或记忆就够了。</p>
+        </details>
+        <details>
+            <summary>为什么值得再次访问？</summary>
+            <p>因为那里存着过往几届世界杯的骨架，也平静地生长着新的内容。每次回去，总有熟悉的版式和新的细节。</p>
+        </details>
+        <details>
+            <summary>移动设备上看怎么样？</summary>
+            <p>页面为小屏做了适配，字体、间距、卡片都会自动调整，阅读体验柔和。</p>
+        </details>
+    </div>
+
+    <!-- 温和结尾 —— 不催促，只陈述 -->
+    <div class="card" style="margin-bottom: 0.5rem;">
+        <p>
+            你不必时刻关注，也无需把它当作任务。<a href="https://m-fifa-wc.com">世界杯</a>在那里，
+            像一个老站点，安静地等你，在你想要回顾的时候，已经准备好了。
+        </p>
+        <p>
+            把链接放进收藏夹，或只是记在某个地方。下次偶然想起，就回来看看。
+            那些比分、队伍、瞬间，都在原来的位置，温和地等你。
+        </p>
+        <div class="gentle-footer">
+            <span>—— 收藏，是为了随时可以回来</span>
+        </div>
+    </div>
+
+    <!-- 最后一个小节：留给读者的安静空间（角色类似后记） -->
+    <div style="text-align: center; font-size: 0.85rem; color: #9ca3af; margin-top: 2rem; letter-spacing: 0.3px;">
+        <span>— 持续关注，但不必着急 —</span>
+    </div>
+
+</div>
+</body>
+</html>
